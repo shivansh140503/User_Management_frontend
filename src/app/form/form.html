@@ -1,0 +1,43 @@
+<mat-card>
+  <h2>Register User</h2>
+  <form #formRef="ngForm" (ngSubmit)="submitForm(formRef)">
+
+    <!-- Name field -->
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Full Name</mat-label>
+      <input matInput type="text" name="fname" [(ngModel)]="user.FNAME" required>
+    </mat-form-field>
+
+    <!-- Email field -->
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Email</mat-label>
+      <input matInput type="email" name="email" [(ngModel)]="user.email" required email #email="ngModel">
+       <mat-error *ngIf="email.invalid && email.touched">
+        Please enter a valid email address.
+      </mat-error>
+    </mat-form-field>
+
+    <!-- Password field -->
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Password</mat-label>
+      <input matInput type="password" name="password" [(ngModel)]="user.password" required minlength="4" #password="ngModel">
+       <mat-error *ngIf="password.invalid && password.touched">
+        Password must be at least 4 characters long.
+      </mat-error>
+    </mat-form-field>
+
+    <!-- Role field -->
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Role</mat-label>
+      <mat-select name="role" [(ngModel)]="user.role" required>
+        <mat-option value="">Select Role</mat-option>
+        <mat-option value="Admin">Admin</mat-option>
+        <mat-option value="User">User</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <!-- Submit button -->
+    
+    <button mat-raised-button color="primary" type="submit">Submit</button>
+  </form>
+</mat-card>

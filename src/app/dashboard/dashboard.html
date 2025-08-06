@@ -1,0 +1,62 @@
+<h2 class="dashboard-title">Admin Dashboard</h2>
+
+<div class="dashboard-controls">
+  <select class="view-select" [(ngModel)]="view" (change)="switchView(view)">
+    <option value="users">User Table</option>
+    <option value="activities">Activity Table</option>
+  </select>
+
+  <button class="logout-btn" (click)="logout()">Logout</button>
+</div>
+
+<!-- USERS TABLE -->
+<div *ngIf="view === 'users'" class="table-section">
+  <h3>Users</h3>
+  <table class="styled-table" *ngIf="users.length > 0">
+    <thead>
+      <tr>
+        <th>User ID</th>
+        <th>Full Name</th>
+        <th>Email</th>
+        <th>Password</th>
+        <th>Role</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let u of users">
+        <td>{{ u.userID }}</td>
+        <td>{{ u.fname }}</td>
+        <td>{{ u.email }}</td>
+        <td>{{ u.password }}</td>
+        <td>{{ u.role }}</td>
+      </tr>
+    </tbody>
+  </table>
+  <p class="empty-message" *ngIf="users.length === 0">No users found.</p>
+</div>
+
+<!-- USER ACTIVITY TABLE -->
+<div *ngIf="view === 'activities'" class="table-section">
+  <h3>User Activity</h3>
+  <table class="styled-table" *ngIf="activities.length > 0">
+    <thead>
+      <tr>
+        <th>Activity ID</th>
+        <th>User ID</th>
+        <th>Name</th>
+        <th>Action</th>
+        <th>Timestamp</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let a of activities">
+        <td>{{ a.activityID }}</td>
+        <td>{{ a.userID }}</td>
+        <td>{{ a.fname }}</td>
+        <td>{{ a.activity }}</td>
+        <td>{{ a.timestamp }}</td>
+      </tr>
+    </tbody>
+  </table>
+  <p class="empty-message" *ngIf="activities.length === 0">No user activity found.</p>
+</div>

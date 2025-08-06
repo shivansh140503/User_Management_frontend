@@ -1,3 +1,16 @@
 import { Routes } from '@angular/router';
+import { provideRouter } from '@angular/router';
+import { Form } from './form/form';
+import { HomeComponent } from './home/home';
+import { Login } from './login/login';
+import { Dashboard } from './dashboard/dashboard';
 
-export const routes: Routes = [];
+export const routes: Routes = [
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
+  { path: 'home', component: HomeComponent },
+  { path: 'login', component: Login},
+  { path: 'create-user', component: Form },
+  { path: 'dashboard', component: Dashboard },
+];
+
+
