@@ -48,7 +48,7 @@ export class Dashboard implements OnInit {
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
     // this.loadUsers(headers);
 
-    if (this.role === 'admin') {
+    if (this.role === 'admin' || this.role === 'Admin') {
       console.log('print activity');
       this.loadUsers(headers);
       this.loadActivities(headers);
@@ -58,6 +58,7 @@ export class Dashboard implements OnInit {
       console.log('print Current user');
       this.loadCurrentUser(headers);
     }
+
 
     
   }
@@ -110,6 +111,11 @@ export class Dashboard implements OnInit {
   switchView(selected: string): void {
     this.view = selected as 'users' | 'activities';
   }
+
+  loadUpdate(user: any): void {
+  this.router.navigate(['/update-user'], { state: { username: user.fname } });
+}
+
 
   logout(): void {
     localStorage.removeItem('token');

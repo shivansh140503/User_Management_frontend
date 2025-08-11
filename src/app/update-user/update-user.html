@@ -1,0 +1,36 @@
+<div class="container">
+  <h2>Update User</h2>
+
+  <!-- <div *ngIf="!formVisible">
+    <label>Enter username to update:</label>
+    <input type="text" [(ngModel)]="username">
+    <button (click)="fetchUser()">Fetch User</button>
+  </div> -->
+
+
+ <form *ngIf="formVisible" (ngSubmit)="submitUpdate()">
+  <input type="hidden" [value]="username" />
+
+  <label>Name:</label>
+  <input type="text" [(ngModel)]="updateData.name" name="name" required />
+
+  <label>Email:</label>
+  <input type="email" [(ngModel)]="updateData.email" name="email" required />
+
+  <label>Password:</label>
+  <input type="password" [(ngModel)]="updateData.password" name="password" required />
+
+  <label>Role:</label>
+  <select [(ngModel)]="updateData.role" name="role" required>
+    <option value="" disabled selected>Select role</option>
+    <option value="user">User</option>
+    <option value="admin">Admin</option>
+  </select>
+
+  <button type="submit">Update</button>
+</form>
+
+
+
+  <p *ngIf="message">{{ message }}</p>
+</div>
